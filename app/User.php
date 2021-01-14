@@ -44,6 +44,16 @@ class User extends Authenticatable
         return $role->id;
     }
 
+    public function isAdmin()
+    {
+        // jika role_id nya maka dia false itu user kalo true sebagai admin
+        if ($this->role_id === $this->get_user_role_id) {
+            return false;
+        }
+
+        return true;
+    }
+
     protected static function boot()
     {
         parent::boot();
