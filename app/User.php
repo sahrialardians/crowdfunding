@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id'
+        'name', 'email', 'password',
     ];
 
     /**
@@ -37,4 +37,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function get_user_role_id()
+    {
+        $role = \App\Role::where('name', 'user')->first();
+        return $role->id;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model){
+            $model->role_id = $model->get_user_role_id();
+        });
+    }
 }
