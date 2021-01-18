@@ -12,3 +12,4 @@
 */
 
 Route::post('register', 'Api\Auth\RegisterController');
+Route::post('verification', 'Api\Auth\VerificationController');
