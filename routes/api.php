@@ -13,3 +13,4 @@
 
 Route::post('register', 'Api\Auth\RegisterController');
 Route::post('verification', 'Api\Auth\VerificationController');
+Route::post('regenerate-otp', 'Api\Auth\RegenerateOtpController');
